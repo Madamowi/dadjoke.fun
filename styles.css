@@ -1,0 +1,135 @@
+/* 
+  Responsive, modern, and clean design. 
+  - Uses media queries to adapt the layout on mobile devices.
+*/
+
+/* 1. Base Reset / Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Global Page Styles */
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Body Layout: vertical stacking (header, main, footer) */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start;
+}
+
+/* 3. Header & Footer (Ad Spaces) */
+.ad-space {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ad-slot {
+  width: 100%;
+  max-width: 728px; /* typical desktop banner width */
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Make the ad slot narrower on small screens */
+@media (max-width: 480px) {
+  .ad-slot {
+    max-width: 300px; /* typical mobile banner size */
+  }
+}
+
+/* 4. Main Content */
+.main-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* 5. Dad Joke Container 
+   - Use max-width and a percentage width so it can shrink on small screens
+*/
+.container {
+  width: 90%;         /* allow container to shrink on narrow screens */
+  max-width: 380px;   /* won't stretch beyond 380px on larger screens */
+  min-height: 320px;  /* ensure some vertical space */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.5rem;
+  text-align: center;
+  overflow-y: auto;
+}
+
+/* 6. Title */
+.title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* 7. Joke Text */
+.joke {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  color: #555;
+}
+
+/* 8. "Get Another" Button */
+.btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffbe0b;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #fca311;
+}
+
+/* MEDIA QUERIES: Fine-tune font sizes for smaller screens */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .joke {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+}
