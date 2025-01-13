@@ -34,21 +34,65 @@ const dadJokes = [
   "I told my wife she was drawing her eyebrows too high. She looked surprised.",
   "I gave all my dead batteries away. Free of charge."
 ];
+
+// Function to get a random joke and its ID
+function getRandomDadJoke() {
+  const randomIndex = Math.floor(Math.random() * dadJokes.length);
+  return { joke: dadJokes[randomIndex], id: randomIndex };
+}
+
+// Function to update the shareable joke link
+function updateShareLink(jokeId) {
+  const shareLink = document.getElementById('shareLink');
+  const currentURL = window.location.origin + window.location.pathname; // Base URL without hash
+  const fullURL = `${currentURL}#${jokeId}`; // Add the joke ID as a hash
+  shareLink.href = fullURL;
+  shareLink.textContent = "Share this joke";
+}
+
+// Function to get the joke based on the URL hash
+function getJokeFromURL() {
+  const hash = window.location.hash.substring(1); // Get hash without '#'
+  const jokeId = parseInt(hash, 10); // Convert hash to a number
+  if (!isNaN(jokeId) && jokeId >= 0 && jokeId < dadJokes.length) {
+    return { joke: dadJokes[jokeId], id: jokeId };
+  }
+  return null; // Return null if the hash is invalid
+}
+
+// On page load
+window.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded and parsed"); // Debugging statement
   
-  function getRandomDadJoke() {
-    const randomIndex = Math.floor(Math.random() * dadJokes.length);
-    return dadJokes[randomIndex];
+  const jokeDisplay = document.getElementById('jokeDisplay');
+  const jokeButton = document.getElementById('jokeButton');
+  const shareLink = document.getElementById('shareLink'); // Added for debugging
+  
+  if (!jokeDisplay || !jokeButton || !shareLink) {
+    console.error("One or more DOM elements are missing!");
+    return;
   }
   
-  window.addEventListener('DOMContentLoaded', () => {
-    const jokeDisplay = document.getElementById('jokeDisplay');
-    const jokeButton = document.getElementById('jokeButton');
-  
-    // 1. Immediately display a random joke on page load
-    jokeDisplay.textContent = getRandomDadJoke();
-  
-    // 2. Also update the joke text when the button is clicked
-    jokeButton.addEventListener('click', () => {
-      jokeDisplay.textContent = getRandomDadJoke();
-    });
+  // Check if there's a joke ID in the URL hash
+  const jokeFromURL = getJokeFromURL();
+  if (jokeFromURL) {
+    // Display the joke from the URL
+    jokeDisplay.textContent = jokeFromURL.joke;
+    updateShareLink(jokeFromURL.id);
+    console.log(`Displayed joke ID: ${jokeFromURL.id}`);
+  } else {
+    // Display a random joke if no hash is present
+    const initialJoke = getRandomDadJoke();
+    jokeDisplay.textContent = initialJoke.joke;
+    updateShareLink(initialJoke.id);
+    console.log(`Displayed initial joke ID: ${initialJoke.id}`);
+  }
+
+  // Update joke and share link on button click
+  jokeButton.addEventListener('click', () => {
+    const newJoke = getRandomDadJoke();
+    jokeDisplay.textContent = newJoke.joke;
+    updateShareLink(newJoke.id);
+    console.log(`Displayed new joke ID: ${newJoke.id}`);
   });
+});

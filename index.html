@@ -2,45 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dad Jokes — Responsive</title>
-  <!-- Google Font for a clean, modern look -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dad Jokes — Share the Laughs!</title>
+  
+  <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  
+  <!-- External CSS -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="moustache-473661_1280.png" />
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6927037890540240"
-     crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script>
+
 </head>
 <body>
-
-  <!-- Top Ad Space -->
-  <header class="ad-space">
-    <div class="ad-slot">
-      <!-- Insert your ad code here -->
-      <p>Top Ad Placeholder</p>
+  <header class="header">
+    <div class="header-content">
+      <h1 class="header-title">dadjoke.fun</h1>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTqYS1F-nudHF-bQfr05KNKOBXrshjp8zG86X6e3KNBZg4pg/viewform?usp=header"
+         target="_blank"
+         class="btn submit-btn">
+        Submit a Joke
+      </a>
     </div>
   </header>
 
-  <!-- Main Content (Dad Jokes) -->
   <main class="main-content">
-    <div class="container">
-      <h1 class="title">Need a Dad Joke?</h1>
-      <p id="jokeDisplay" class="joke">Loading joke...</p>
-      <button id="jokeButton" class="btn">Get Another</button>
-    </div>
+    <div class="joke-card">
+        <h2 class="joke-heading">Need a Dad Joke?</h2>
+        <div class="joke-content">
+          <p id="jokeDisplay" class="joke">Why couldn't the bicycle stand up by itself? It was two-tired!</p>
+        </div>
+        <div class="joke-actions">
+          <a id="shareLink" href="#" target="_blank" class="btn secondary">Share this joke</a>
+          <button id="jokeButton" class="btn primary">Get Another</button>
+        </div>
+      </div>
+      
+      
   </main>
 
-  <!-- Bottom Ad Space -->
-  <footer class="ad-space">
-    <div class="ad-slot">
-      <!-- Insert your ad code here as well -->
-      <p>Bottom Ad Placeholder</p>
-    </div>
-  </footer>
-
+  <!-- External JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>

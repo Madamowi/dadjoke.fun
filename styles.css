@@ -1,135 +1,210 @@
-/* 
-  Responsive, modern, and clean design. 
-  - Uses media queries to adapt the layout on mobile devices.
-*/
-
-/* 1. Base Reset / Box-Sizing */
+/* Base Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* 2. Global Page Styles */
-html, body {
-  height: 100%;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-/* Body Layout: vertical stacking (header, main, footer) */
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: flex-start;
-}
-
-/* 3. Header & Footer (Ad Spaces) */
-.ad-space {
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.ad-slot {
-  width: 100%;
-  max-width: 728px; /* typical desktop banner width */
-  margin: 0 auto;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Make the ad slot narrower on small screens */
-@media (max-width: 480px) {
-  .ad-slot {
-    max-width: 300px; /* typical mobile banner size */
-  }
-}
-
-/* 4. Main Content */
-.main-content {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-/* 5. Dad Joke Container 
-   - Use max-width and a percentage width so it can shrink on small screens
-*/
-.container {
-  width: 90%;         /* allow container to shrink on narrow screens */
-  max-width: 380px;   /* won't stretch beyond 380px on larger screens */
-  min-height: 320px;  /* ensure some vertical space */
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 1.5rem;
-  text-align: center;
-  overflow-y: auto;
-}
-
-/* 6. Title */
-.title {
-  font-weight: 600;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-/* 7. Joke Text */
-.joke {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0 0 1rem;
-  flex: 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
-  color: #555;
-}
-
-/* 8. "Get Another" Button */
-.btn {
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 4px;
-  background-color: #ffbe0b;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #fca311;
-}
-
-/* MEDIA QUERIES: Fine-tune font sizes for smaller screens */
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
+  /* Body Styling */
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  
+  /* Header Styling */
+  .header {
+    background-color: #1a202c;
+    width: 100%;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-title::before {
+    content: url('moustache-473661_1280.png');
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    filter: invert(1); /* Inverts the color of the image */
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    background-color: #3182ce;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2c5282;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+  }
+  
+  .joke-heading {
+    font-size: 3rem; /* Larger heading */
+    margin-bottom: 1rem; /* More space between the heading and joke */
+  }
+
+  .joke-card::before {
+    content: "";
+    /* position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #3182ce;
+    border-radius: 10px; */
+  }
+  
+/* Joke Card */
+.joke-card {
+    background: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 350px; /* Set a fixed height */
+    justify-content: space-between; /* Ensure consistent spacing */
+  }
+  
+  /* Joke Text */
   .joke {
-    font-size: 1rem;
+    font-size: 1.4rem;
+    color: #2d3748;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: center;
+    overflow: hidden; /* Prevent overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Display a maximum of 3 lines */
+    -webkit-box-orient: vertical;
   }
   
-  .btn {
-    font-size: 0.95rem;
-    padding: 0.6rem 1rem;
+  /* Joke Actions (Buttons) */
+  .joke-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: auto; /* Push buttons to the bottom of the card */
   }
-}
+  
+  
+  .joke-actions .btn {
+    flex: 0 0 auto;
+  }
+  
+  /* Button Styling */
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Primary Button */
+  .btn.primary {
+    background-color: #38a169;
+    color: #fff;
+  }
+  
+  .btn.primary:hover {
+    background-color: #2f855a;
+  }
+  
+  /* Secondary Button */
+  .btn.secondary {
+    background-color: #3182ce;
+    color: #fff;
+  }
+  
+  .btn.secondary:hover {
+    background-color: #2c5282;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .submit-btn {
+      margin-top: 1rem;
+    }
+  
+    .joke {
+      font-size: 1.2rem;
+    }
+  
+    .joke-card {
+      padding: 1.5rem;
+      min-height: 250px; /* Reduce height for smaller devices */
+    }
+
+    .joke-heading {
+        font-size: 3rem; /* Larger heading */
+        margin-bottom: 3rem; /* More space between the heading and joke */
+      }
+
+    .joke-actions {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  
+    .btn {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  }
+  
